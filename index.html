@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>ВкусКипер | Импортные сладости</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +22,10 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        html { scroll-behavior: smooth; }
+        html { 
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
 
         /* Кастомный скроллбар */
         ::-webkit-scrollbar { width: 8px; }
@@ -35,6 +38,8 @@
             color: var(--text);
             overflow-x: hidden;
             line-height: 1.6;
+            position: relative;
+            width: 100%;
         }
 
         h1, h2, h3, .btn { font-family: 'Montserrat', sans-serif; text-transform: uppercase; }
@@ -68,7 +73,7 @@
             border: 2px solid var(--primary);
             padding: 2px;
             box-shadow: 0 0 15px rgba(0, 255, 157, 0.3);
-            overflow: hidden; /* Обрезаем все, что выходит за круг */
+            overflow: hidden;
         }
 
         .header-logo img {
@@ -132,24 +137,25 @@
         .hero-content {
             z-index: 2;
             max-width: 800px;
+            width: 100%;
         }
 
         .hero-logo-circle {
             width: 220px;
             height: 220px;
             margin: 0 auto 30px;
-            border-radius: 50%; /* Делаем круг */
+            border-radius: 50%;
             border: 4px solid var(--primary);
             box-shadow: 0 0 40px rgba(0, 255, 157, 0.4);
-            overflow: hidden; /* Обрезаем изображение по кругу */
-            background: #000; /* Фон круга */
+            overflow: hidden;
+            background: #000;
             animation: pulse 3s infinite alternate;
         }
 
         .hero-logo-circle img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Изображение заполняет круг */
+            object-fit: cover;
         }
 
         @keyframes pulse {
@@ -173,7 +179,6 @@
             margin-bottom: 40px;
         }
 
-        /* Возвращенный стиль кнопки */
         .btn {
             padding: 15px 40px;
             background: var(--primary);
@@ -203,6 +208,7 @@
             z-index: 10;
             border-top: 3px solid #fff;
             border-bottom: 3px solid #fff;
+            overflow: hidden;
         }
 
         .ticker {
@@ -218,7 +224,10 @@
             font-family: 'Montserrat', sans-serif;
         }
 
-        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+        @keyframes scroll { 
+            0% { transform: translateX(0); } 
+            100% { transform: translateX(-50%); } 
+        }
 
         /* --- Sections --- */
         .section {
@@ -260,10 +269,12 @@
 
         .arcade-img-wrap img {
             width: 100%;
+            height: auto;
             border-radius: 15px;
             box-shadow: 0 0 50px rgba(255, 0, 85, 0.3);
             border: 3px solid var(--accent);
             transition: transform 0.3s;
+            display: block;
         }
 
         .arcade-img-wrap img:hover { transform: rotate(2deg) scale(1.02); }
@@ -289,7 +300,11 @@
             box-shadow: 0 10px 40px rgba(0, 255, 157, 0.2);
         }
 
-        .masonry-item img { width: 100%; display: block; }
+        .masonry-item img { 
+            width: 100%; 
+            height: auto;
+            display: block; 
+        }
 
         /* --- Infinite Reviews --- */
         .reviews-section {
@@ -405,42 +420,93 @@
 
         /* --- Mobile --- */
         @media (max-width: 900px) {
-            /* Уменьшаем текст на мобильных */
-            body { font-size: 14px; }
+            body { 
+                font-size: 14px;
+                min-width: 100%;
+            }
             
             header {
-                padding: 10px 20px;
+                padding: 12px 20px;
             }
             
             .header-logo { width: 40px; height: 40px; }
-            .logo-text { font-size: 1.2rem; }
+            .logo-text { font-size: 1.1rem; }
             .nav-menu { display: none; }
 
             .hero {
-                padding: 100px 15px 50px;
+                padding: 120px 20px 60px;
+                min-height: 100vh;
             }
 
-            .hero h1 { font-size: 2.5rem; }
-            .tagline { font-size: 1rem; }
-            .hero-logo-circle { width: 150px; height: 150px; }
+            .hero-content {
+                padding: 0 10px;
+            }
 
-            .ticker div { font-size: 1.3rem; padding: 0 25px; }
+            .hero h1 { 
+                font-size: 2.2rem;
+                margin-bottom: 15px;
+            }
+            
+            .tagline { 
+                font-size: 0.95rem;
+                margin-bottom: 30px;
+                padding: 0 10px;
+            }
+            
+            .hero-logo-circle { 
+                width: 140px; 
+                height: 140px;
+                margin-bottom: 25px;
+            }
+
+            .ticker-wrap {
+                padding: 15px 0;
+            }
+
+            .ticker div { 
+                font-size: 1.2rem; 
+                padding: 0 20px; 
+            }
 
             .section {
-                padding: 60px 15px;
+                padding: 60px 20px;
             }
 
-            .section-title { font-size: 2rem; margin-bottom: 40px; }
-            
-            .arcade-section {
-                gap: 30px;
+            .section-title { 
+                font-size: 2rem; 
+                margin-bottom: 40px;
             }
             
-            .arcade-content { min-width: 100%; }
-            .arcade-content h2 { font-size: 2.2rem; }
-            .arcade-content p { font-size: 0.95rem; }
+            .arcade-section {
+                gap: 40px;
+                padding: 60px 20px;
+            }
             
-            .arcade-img-wrap { min-width: 100%; }
+            .arcade-content { 
+                min-width: 100%;
+                width: 100%;
+            }
+            
+            .arcade-content h2 { 
+                font-size: 2rem;
+                margin-bottom: 20px;
+            }
+            
+            .arcade-content p { 
+                font-size: 0.95rem;
+                margin-bottom: 20px !important;
+            }
+            
+            .arcade-img-wrap { 
+                min-width: 100%;
+                width: 100%;
+            }
+
+            .arcade-img-wrap img {
+                width: 100%;
+                height: auto;
+                max-width: 100%;
+            }
 
             .masonry { 
                 columns: 1;
@@ -449,41 +515,68 @@
             
             .masonry-item {
                 margin-bottom: 15px;
+                width: 100%;
             }
 
-            .review-card { width: 280px; margin: 0 10px; padding: 25px; }
-            .review-text { font-size: 0.95rem; }
+            .masonry-item img {
+                width: 100%;
+                height: auto;
+                max-width: 100%;
+            }
 
-            /* Исправление для контактов на мобильном */
+            .reviews-section {
+                padding: 60px 0;
+            }
+
+            .review-card { 
+                width: 280px; 
+                margin: 0 10px; 
+                padding: 25px; 
+            }
+            
+            .review-text { 
+                font-size: 0.95rem; 
+            }
+
             .contacts-container {
                 flex-direction: column;
-                height: auto;
             }
+            
             .contacts-info {
                 padding: 40px 25px;
-                flex: 1 1 auto;
                 min-width: 100%;
+                width: 100%;
             }
+            
             .contacts-map {
-                height: 400px;
-                min-height: 400px;
-                flex: 1 1 auto;
+                height: 350px;
+                min-height: 350px;
                 min-width: 100%;
+                width: 100%;
             }
+            
             .contact-row { 
-                margin-bottom: 30px;
+                margin-bottom: 35px;
                 gap: 15px;
             }
+            
             .contact-row i {
                 font-size: 1.5rem;
             }
-            .contact-row h3 { font-size: 1.1rem; }
-            .contact-row p { font-size: 0.95rem; }
+            
+            .contact-row h3 { 
+                font-size: 1.1rem;
+                margin-bottom: 8px;
+            }
+            
+            .contact-row p { 
+                font-size: 0.95rem;
+            }
             
             .social-btn {
                 padding: 10px 20px;
-                font-size: 0.9rem;
-                margin-right: 10px;
+                font-size: 0.85rem;
+                margin-right: 8px;
                 margin-top: 10px;
             }
             
@@ -494,14 +587,43 @@
         }
         
         @media (max-width: 480px) {
-            .hero h1 { font-size: 2rem; }
-            .tagline { font-size: 0.9rem; }
-            .hero-logo-circle { width: 120px; height: 120px; }
+            .hero {
+                padding: 100px 15px 50px;
+            }
+
+            .hero h1 { 
+                font-size: 1.8rem;
+            }
             
-            .section-title { font-size: 1.8rem; }
-            .arcade-content h2 { font-size: 1.8rem; }
+            .tagline { 
+                font-size: 0.85rem;
+            }
             
-            .ticker div { font-size: 1.1rem; padding: 0 20px; }
+            .hero-logo-circle { 
+                width: 120px; 
+                height: 120px;
+            }
+            
+            .section-title { 
+                font-size: 1.7rem;
+            }
+            
+            .arcade-content h2 { 
+                font-size: 1.7rem;
+            }
+            
+            .ticker div { 
+                font-size: 1rem; 
+                padding: 0 15px; 
+            }
+
+            .section {
+                padding: 50px 15px;
+            }
+
+            .arcade-section {
+                padding: 50px 15px;
+            }
         }
     </style>
 </head>
