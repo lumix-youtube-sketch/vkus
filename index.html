@@ -407,24 +407,52 @@
         @media (max-width: 900px) {
             /* Уменьшаем текст на мобильных */
             body { font-size: 14px; }
+            
+            header {
+                padding: 10px 20px;
+            }
+            
             .header-logo { width: 40px; height: 40px; }
             .logo-text { font-size: 1.2rem; }
             .nav-menu { display: none; }
 
-            .hero h1 { font-size: 3rem; }
-            .tagline { font-size: 1.1rem; }
-            .hero-logo-circle { width: 180px; height: 180px; }
+            .hero {
+                padding: 100px 15px 50px;
+            }
 
-            .ticker div { font-size: 1.5rem; padding: 0 30px; }
+            .hero h1 { font-size: 2.5rem; }
+            .tagline { font-size: 1rem; }
+            .hero-logo-circle { width: 150px; height: 150px; }
 
-            .section-title { font-size: 2.5rem; }
-            .arcade-content h2 { font-size: 2.8rem; }
-            .arcade-content p { font-size: 1rem; }
+            .ticker div { font-size: 1.3rem; padding: 0 25px; }
 
-            .masonry { columns: 2 150px; }
+            .section {
+                padding: 60px 15px;
+            }
 
-            .review-card { width: 300px; margin: 0 10px; }
-            .review-text { font-size: 1rem; }
+            .section-title { font-size: 2rem; margin-bottom: 40px; }
+            
+            .arcade-section {
+                gap: 30px;
+            }
+            
+            .arcade-content { min-width: 100%; }
+            .arcade-content h2 { font-size: 2.2rem; }
+            .arcade-content p { font-size: 0.95rem; }
+            
+            .arcade-img-wrap { min-width: 100%; }
+
+            .masonry { 
+                columns: 1;
+                gap: 15px;
+            }
+            
+            .masonry-item {
+                margin-bottom: 15px;
+            }
+
+            .review-card { width: 280px; margin: 0 10px; padding: 25px; }
+            .review-text { font-size: 0.95rem; }
 
             /* Исправление для контактов на мобильном */
             .contacts-container {
@@ -432,18 +460,48 @@
                 height: auto;
             }
             .contacts-info {
-                padding: 40px 30px;
+                padding: 40px 25px;
                 flex: 1 1 auto;
-                min-width: auto;
+                min-width: 100%;
             }
             .contacts-map {
-                height: 350px; /* Фиксированная высота карты */
-                min-height: 350px;
+                height: 400px;
+                min-height: 400px;
                 flex: 1 1 auto;
-                min-width: auto;
+                min-width: 100%;
             }
-            .contact-row h3 { font-size: 1.2rem; }
-            .contact-row p { font-size: 1rem; }
+            .contact-row { 
+                margin-bottom: 30px;
+                gap: 15px;
+            }
+            .contact-row i {
+                font-size: 1.5rem;
+            }
+            .contact-row h3 { font-size: 1.1rem; }
+            .contact-row p { font-size: 0.95rem; }
+            
+            .social-btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+                margin-right: 10px;
+                margin-top: 10px;
+            }
+            
+            .btn {
+                padding: 12px 30px;
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 2rem; }
+            .tagline { font-size: 0.9rem; }
+            .hero-logo-circle { width: 120px; height: 120px; }
+            
+            .section-title { font-size: 1.8rem; }
+            .arcade-content h2 { font-size: 1.8rem; }
+            
+            .ticker div { font-size: 1.1rem; padding: 0 20px; }
         }
     </style>
 </head>
