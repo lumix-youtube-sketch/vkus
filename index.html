@@ -278,10 +278,10 @@
 
         .arcade-img-wrap img:hover { transform: rotate(2deg) scale(1.02); }
 
-        /* --- Gallery Two Columns --- */
+        /* --- Gallery Two Columns EVERYWHERE --- */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(2, 1fr) !important;
             gap: 20px;
             max-width: 1200px;
             margin: 0 auto;
@@ -540,12 +540,12 @@
             }
 
             .gallery-grid { 
-                grid-template-columns: repeat(2, 1fr);
-                gap: 15px;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 12px;
             }
 
             .gallery-item img {
-                min-height: 180px;
+                min-height: 150px;
             }
 
             .reviews-section {
@@ -650,11 +650,12 @@
             }
 
             .gallery-grid {
-                gap: 10px;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 8px;
             }
 
             .gallery-item img {
-                min-height: 150px;
+                min-height: 120px;
             }
         }
     </style>
