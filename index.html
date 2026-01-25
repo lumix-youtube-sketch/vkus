@@ -154,17 +154,9 @@
   <div id="message"></div>
   <div id="disclaimer">Оригинальные бренды и ассеты не используются. Независимый sandbox-проект.</div>
 
-  <script type="importmap">
-    {
-      "imports": {
-        "three": "https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.module.js",
-        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.158.0/examples/jsm/"
-      }
-    }
-  </script>
   <script type="module">
-    import * as THREE from "three";
-    import { PointerLockControls } from "three/addons/controls/PointerLockControls.js";
+    import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.module.js";
+    import { PointerLockControls } from "https://cdn.jsdelivr.net/npm/three@0.158.0/examples/jsm/controls/PointerLockControls.js";
 
     const settings = {
       chunkSize: 16,
