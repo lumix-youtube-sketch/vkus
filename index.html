@@ -1,821 +1,1202 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ВкусКипер | Импортные сладости</title>
-
-    <link rel="preconnect" href__="https://fonts.googleapis.com">
-    <link rel="preconnect" href__="https://fonts.gstatic.com" crossorigin>
-    <link href__="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href__="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <style>
-        :root {
-            --primary: #00ff9d;
-            --accent: #ff0055;
-            --bg-dark: #050505;
-            --text: #ffffff;
-            --border: rgba(255, 255, 255, 0.1);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        html { 
-            scroll-behavior: smooth;
-            -webkit-text-size-adjust: 100%;
-        }
-
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg-dark); }
-        ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 4px; }
-
-        body {
-            font-family: 'Open Sans', sans-serif;
-            background: linear-gradient(to bottom, #020202, #111111, #020202);
-            color: var(--text);
-            overflow-x: hidden;
-            line-height: 1.6;
-            position: relative;
-            width: 100%;
-        }
-
-        h1, h2, h3, .btn { font-family: 'Montserrat', sans-serif; text-transform: uppercase; }
-
-        /* --- Header --- */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 10px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(5, 5, 5, 0.9);
-            backdrop-filter: blur(15px);
-            z-index: 1000;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            text-decoration: none;
-        }
-
-        .header-logo {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            border: 2px solid var(--primary);
-            padding: 2px;
-            box-shadow: 0 0 15px rgba(0, 255, 157, 0.3);
-            overflow: hidden;
-        }
-
-        .header-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .logo-text {
-            font-weight: 900;
-            font-size: 1.4rem;
-            color: #fff;
-        }
-
-        .logo-text span { color: var(--primary); }
-
-        .nav-menu {
-            display: flex;
-            gap: 25px;
-        }
-
-        .nav-menu a {
-            color: #ccc;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: 0.3s;
-            letter-spacing: 0.5px;
-            padding-bottom: 5px;
-            border-bottom: 2px solid transparent;
-        }
-
-        .nav-menu a:hover {
-            color: var(--primary);
-            border-color: var(--primary);
-        }
-
-        /* --- Hero Section --- */
-        .hero {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 100px 20px 50px;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, var(--bg-dark) 90%), url('hero-bg.png');
-            background-size: cover;
-            background-position: center;
-            z-index: -1;
-            filter: brightness(0.7);
-        }
-
-        .hero-content {
-            z-index: 2;
-            max-width: 800px;
-            width: 100%;
-        }
-
-        .hero-logo-circle {
-            width: 220px;
-            height: 220px;
-            margin: 0 auto 30px;
-            border-radius: 50%;
-            border: 4px solid var(--primary);
-            box-shadow: 0 0 40px rgba(0, 255, 157, 0.4);
-            overflow: hidden;
-            background: #000;
-            animation: pulse 3s infinite alternate;
-        }
-
-        .hero-logo-circle img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        @keyframes pulse {
-            from { box-shadow: 0 0 20px rgba(0, 255, 157, 0.2); }
-            to { box-shadow: 0 0 50px rgba(0, 255, 157, 0.6); }
-        }
-
-        .hero h1 {
-            font-size: 4.5rem;
-            line-height: 1;
-            margin-bottom: 20px;
-            text-shadow: 0 0 25px rgba(0, 255, 157, 0.3);
-            font-weight: 900;
-        }
-
-        .hero h1 span { color: var(--primary); }
-
-        .tagline {
-            font-size: 1.3rem;
-            color: #ccc;
-            margin-bottom: 40px;
-        }
-
-        .btn {
-            padding: 15px 40px;
-            background: var(--primary);
-            color: #000;
-            text-decoration: none;
-            font-weight: 800;
-            font-size: 1rem;
-            border-radius: 50px;
-            transition: 0.3s;
-            display: inline-block;
-            box-shadow: 0 5px 15px rgba(0, 255, 157, 0.3);
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0, 255, 157, 0.5);
-            background: #fff;
-        }
-
-        /* --- Ticker --- */
-        .ticker-wrap {
-            background: var(--primary);
-            color: #000;
-            padding: 20px 0;
-            margin: 0;
-            position: relative;
-            z-index: 10;
-            border-top: 3px solid #fff;
-            border-bottom: 3px solid #fff;
-            overflow: hidden;
-        }
-
-        .ticker {
-            display: flex;
-            animation: scroll 20s linear infinite;
-            white-space: nowrap;
-        }
-
-        .ticker div {
-            font-size: 2rem;
-            font-weight: 900;
-            padding: 0 50px;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        @keyframes scroll { 
-            0% { transform: translateX(0); } 
-            100% { transform: translateX(-50%); } 
-        }
-
-        /* --- Sections --- */
-        .section {
-            padding: 100px 5%;
-            background: rgba(255, 255, 255, 0.015);
-            border-top: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 3rem;
-            margin-bottom: 60px;
-        }
-
-        .section-title span { color: var(--primary); }
-
-        /* --- Arcade Section --- */
-        .arcade-section {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 60px;
-            background: radial-gradient(circle at right, rgba(255, 0, 85, 0.1) 0%, transparent 60%);
-        }
-
-        .arcade-content { flex: 1; min-width: 350px; }
-
-        .arcade-content h2 {
-            font-size: 3.5rem;
-            margin-bottom: 25px;
-            color: var(--accent);
-            text-shadow: 0 0 20px rgba(255, 0, 85, 0.5);
-        }
-
-        .arcade-img-wrap {
-            flex: 1;
-            min-width: 350px;
-        }
-
-        .arcade-img-wrap img {
-            width: 100%;
-            height: auto;
-            border-radius: 15px;
-            box-shadow: 0 0 50px rgba(255, 0, 85, 0.3);
-            border: 3px solid var(--accent);
-            transition: transform 0.3s;
-            display: block;
-        }
-
-        .arcade-img-wrap img:hover { transform: rotate(2deg) scale(1.02); }
-
-        /* --- Gallery Two Columns EVERYWHERE --- */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr) !important;
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .gallery-item {
-            border-radius: 15px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.6s ease forwards;
-        }
-
-        .gallery-item:nth-child(1) { animation-delay: 0.1s; }
-        .gallery-item:nth-child(2) { animation-delay: 0.2s; }
-        .gallery-item:nth-child(3) { animation-delay: 0.3s; }
-        .gallery-item:nth-child(4) { animation-delay: 0.4s; }
-        .gallery-item:nth-child(5) { animation-delay: 0.5s; }
-        .gallery-item:nth-child(6) { animation-delay: 0.6s; }
-        .gallery-item:nth-child(7) { animation-delay: 0.7s; }
-        .gallery-item:nth-child(8) { animation-delay: 0.8s; }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.03);
-            border-color: var(--primary);
-            box-shadow: 0 10px 40px rgba(0, 255, 157, 0.2);
-        }
-
-        .gallery-item img { 
-            width: 100%; 
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            min-height: 250px;
-        }
-
-        /* --- Infinite Reviews --- */
-        .reviews-section {
-            padding: 80px 0;
-            overflow: hidden;
-            background: rgba(0,0,0,0.2);
-        }
-
-        .reviews-track {
-            display: flex;
-            width: max-content;
-            animation: scroll-reviews 60s linear infinite;
-        }
-
-        .reviews-track:hover { animation-play-state: paused; }
-
-        .review-card {
-            width: 400px;
-            background: #161616;
-            margin: 0 20px;
-            padding: 30px;
-            border-radius: 20px;
-            border: 1px solid #333;
-            flex-shrink: 0;
-            transition: 0.3s;
-        }
-
-        .review-card:hover { border-color: var(--primary); background: #1a1a1a; }
-
-        .stars { color: #ffd700; margin-bottom: 15px; font-size: 1.2rem; }
-        .review-text { font-style: italic; color: #ddd; margin-bottom: 20px; font-size: 1.1rem; }
-        .review-author { font-weight: 700; color: var(--primary); display: flex; align-items: center; gap: 10px; }
-
-        @keyframes scroll-reviews {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        /* --- Contacts --- */
-        .contacts-container {
-            display: flex;
-            flex-wrap: wrap;
-            border-radius: 25px;
-            overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.1);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .contacts-info {
-            flex: 1;
-            min-width: 350px;
-            background: #161616;
-            padding: 50px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .contacts-map {
-            flex: 1.5;
-            min-width: 350px;
-            min-height: 400px;
-        }
-
-        .contacts-map iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-            filter: invert(90%) hue-rotate(180deg) brightness(80%) contrast(1.2);
-        }
-
-        .contact-row {
-            margin-bottom: 30px;
-            display: flex;
-            gap: 20px;
-        }
-
-        .contact-row i {
-            font-size: 1.5rem;
-            color: var(--primary);
-            margin-top: 3px;
-        }
-
-        .contact-row h3 { 
-            font-size: 1.1rem; 
-            margin-bottom: 8px; 
-        }
-
-        .contact-row p {
-            font-size: 0.95rem;
-        }
-
-        .social-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 18px;
-            background: #252525;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 8px;
-            margin-top: 10px;
-            margin-right: 10px;
-            transition: 0.3s;
-            font-weight: 600;
-            border: 1px solid transparent;
-            font-size: 0.85rem;
-        }
-
-        .social-btn:hover {
-            background: var(--primary);
-            color: #000;
-            box-shadow: 0 0 20px rgba(0, 255, 157, 0.4);
-        }
-
-        .social-btn.tiktok:hover {
-             background: #ff0050;
-             box-shadow: 0 0 20px rgba(255, 0, 80, 0.4);
-             color: #fff;
-        }
-
-        /* --- Mobile --- */
-        @media (max-width: 900px) {
-            body { 
-                font-size: 14px;
-                min-width: 100%;
-            }
-            
-            header {
-                padding: 12px 20px;
-            }
-            
-            .header-logo { width: 40px; height: 40px; }
-            .logo-text { font-size: 1.1rem; }
-            .nav-menu { display: none; }
-
-            .hero {
-                padding: 120px 20px 60px;
-                min-height: 100vh;
-            }
-
-            .hero-content {
-                padding: 0 10px;
-            }
-
-            .hero h1 { 
-                font-size: 2.2rem;
-                margin-bottom: 15px;
-            }
-            
-            .tagline { 
-                font-size: 0.95rem;
-                margin-bottom: 30px;
-                padding: 0 10px;
-            }
-            
-            .hero-logo-circle { 
-                width: 140px; 
-                height: 140px;
-                margin-bottom: 25px;
-            }
-
-            .ticker-wrap {
-                padding: 15px 0;
-            }
-
-            .ticker div { 
-                font-size: 1.2rem; 
-                padding: 0 20px; 
-            }
-
-            .section {
-                padding: 60px 20px;
-            }
-
-            .section-title { 
-                font-size: 2rem; 
-                margin-bottom: 40px;
-            }
-            
-            .arcade-section {
-                gap: 40px;
-                padding: 60px 20px;
-            }
-            
-            .arcade-content { 
-                min-width: 100%;
-                width: 100%;
-            }
-            
-            .arcade-content h2 { 
-                font-size: 2rem;
-                margin-bottom: 20px;
-            }
-            
-            .arcade-content p { 
-                font-size: 0.95rem;
-                margin-bottom: 20px !important;
-            }
-            
-            .arcade-img-wrap { 
-                min-width: 100%;
-                width: 100%;
-            }
-
-            .arcade-img-wrap img {
-                width: 100%;
-                height: auto;
-                max-width: 100%;
-            }
-
-            .gallery-grid { 
-                grid-template-columns: repeat(2, 1fr) !important;
-                gap: 12px;
-            }
-
-            .gallery-item img {
-                min-height: 150px;
-            }
-
-            .reviews-section {
-                padding: 60px 0;
-            }
-
-            .review-card { 
-                width: 280px; 
-                margin: 0 10px; 
-                padding: 25px; 
-            }
-            
-            .review-text { 
-                font-size: 0.95rem; 
-            }
-
-            .contacts-container {
-                flex-direction: column;
-            }
-            
-            .contacts-info {
-                padding: 35px 25px;
-                min-width: 100%;
-                width: 100%;
-            }
-            
-            .contacts-map {
-                height: 300px;
-                min-height: 300px;
-                min-width: 100%;
-                width: 100%;
-            }
-            
-            .contact-row { 
-                margin-bottom: 25px;
-                gap: 15px;
-            }
-            
-            .contact-row i {
-                font-size: 1.3rem;
-            }
-            
-            .contact-row h3 { 
-                font-size: 1rem;
-                margin-bottom: 6px;
-            }
-            
-            .contact-row p { 
-                font-size: 0.9rem;
-            }
-            
-            .social-btn {
-                padding: 7px 15px;
-                font-size: 0.8rem;
-                margin-right: 6px;
-                margin-top: 8px;
-            }
-            
-            .btn {
-                padding: 12px 30px;
-                font-size: 0.9rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .hero {
-                padding: 100px 15px 50px;
-            }
-
-            .hero h1 { 
-                font-size: 1.8rem;
-            }
-            
-            .tagline { 
-                font-size: 0.85rem;
-            }
-            
-            .hero-logo-circle { 
-                width: 120px; 
-                height: 120px;
-            }
-            
-            .section-title { 
-                font-size: 1.7rem;
-            }
-            
-            .arcade-content h2 { 
-                font-size: 1.7rem;
-            }
-            
-            .ticker div { 
-                font-size: 1rem; 
-                padding: 0 15px; 
-            }
-
-            .section {
-                padding: 50px 15px;
-            }
-
-            .arcade-section {
-                padding: 50px 15px;
-            }
-
-            .gallery-grid {
-                grid-template-columns: repeat(2, 1fr) !important;
-                gap: 8px;
-            }
-
-            .gallery-item img {
-                min-height: 120px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Voxel Wilds — Sandbox Survival</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 100%; height: 100%; overflow: hidden; background: #0a0f16; color: #fff; font-family: "Segoe UI", system-ui, sans-serif; }
+    canvas { display: block; }
+
+    #hud {
+      position: fixed; inset: 0; pointer-events: none; display: flex; flex-direction: column; justify-content: space-between;
+      padding: 18px; z-index: 2;
+    }
+
+    #top-left {
+      display: flex; gap: 14px; align-items: center; font-size: 14px;
+      background: rgba(5, 10, 18, 0.55); padding: 10px 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08);
+      width: fit-content;
+    }
+
+    #crosshair {
+      position: fixed; left: 50%; top: 50%; width: 18px; height: 18px; transform: translate(-50%, -50%); z-index: 2;
+      pointer-events: none;
+    }
+    #crosshair::before, #crosshair::after {
+      content: ""; position: absolute; background: rgba(255,255,255,0.9);
+    }
+    #crosshair::before { width: 18px; height: 2px; top: 8px; left: 0; }
+    #crosshair::after { width: 2px; height: 18px; left: 8px; top: 0; }
+
+    #hotbar {
+      display: grid; grid-template-columns: repeat(9, 54px); gap: 8px; justify-content: center;
+      margin-bottom: 24px; pointer-events: none;
+    }
+
+    .slot {
+      width: 54px; height: 54px; border-radius: 8px; background: rgba(5,10,18,0.7);
+      border: 2px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center;
+      font-size: 12px; color: #fff; position: relative; text-align: center;
+    }
+    .slot.active { border-color: #46ff9b; box-shadow: 0 0 12px rgba(70,255,155,0.6); }
+    .slot span { position: absolute; bottom: 4px; right: 6px; font-size: 10px; color: #c9ffe5; }
+
+    #status {
+      display: flex; gap: 16px; align-items: center; margin-left: 10px;
+    }
+    .meter { display: flex; gap: 4px; }
+    .heart, .food {
+      width: 16px; height: 16px; background: #ff4d4d; clip-path: polygon(50% 15%, 61% 6%, 76% 6%, 86% 16%, 86% 31%, 75% 45%, 50% 70%, 25% 45%, 14% 31%, 14% 16%, 24% 6%, 39% 6%);
+    }
+    .food { background: #f5b23a; clip-path: polygon(50% 0%, 65% 15%, 85% 30%, 100% 50%, 80% 70%, 50% 100%, 20% 70%, 0% 50%, 15% 30%, 35% 15%); }
+    .heart.empty { background: rgba(255,255,255,0.15); }
+    .food.empty { background: rgba(255,255,255,0.15); }
+
+    #inventory {
+      position: fixed; inset: 0; display: none; align-items: center; justify-content: center;
+      background: rgba(5,10,18,0.7); z-index: 3; pointer-events: all;
+    }
+
+    #inventory.open { display: flex; }
+
+    .panel {
+      width: min(920px, 95vw); background: #0f1522; border-radius: 18px; padding: 22px;
+      border: 1px solid rgba(255,255,255,0.1); display: grid; grid-template-columns: 2fr 1fr; gap: 24px;
+    }
+
+    .panel h2 { font-size: 20px; margin-bottom: 14px; }
+    .grid { display: grid; gap: 8px; }
+    .grid.inventory { grid-template-columns: repeat(9, 52px); }
+    .grid.crafting { grid-template-columns: repeat(3, 52px); }
+    .grid .slot { width: 52px; height: 52px; pointer-events: all; cursor: pointer; }
+
+    .crafting-area {
+      display: grid; gap: 12px;
+    }
+    .crafting-output {
+      width: 68px; height: 68px; border-radius: 10px; border: 2px dashed rgba(255,255,255,0.2);
+      display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.04);
+    }
+
+    #message {
+      position: fixed; top: 18px; right: 18px; background: rgba(10,20,30,0.7); padding: 12px 16px; border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.1); font-size: 13px; max-width: 320px; z-index: 4; display: none;
+    }
+
+    #message.show { display: block; }
+
+    #loader {
+      position: fixed; inset: 0; background: radial-gradient(circle at top, #122034, #02040a); display: flex; align-items: center; justify-content: center; flex-direction: column;
+      color: #d3ffe9; z-index: 5;
+    }
+    #loader h1 { font-size: 36px; margin-bottom: 8px; }
+    #loader p { font-size: 14px; color: #b7c8dd; }
+
+    #hint {
+      position: fixed; bottom: 90px; left: 50%; transform: translateX(-50%);
+      background: rgba(5,10,18,0.6); padding: 8px 14px; border-radius: 8px; font-size: 12px; z-index: 2;
+    }
+
+    .badge {
+      padding: 4px 10px; border-radius: 999px; background: rgba(70,255,155,0.2); color: #d3ffe9; font-size: 12px;
+    }
+
+    #disclaimer {
+      position: fixed; bottom: 16px; right: 16px; font-size: 10px; color: #b3c2d6; opacity: 0.8; z-index: 2;
+      background: rgba(5,10,18,0.6); padding: 6px 10px; border-radius: 8px;
+    }
+  </style>
 </head>
 <body>
+  <div id="loader">
+    <h1>Voxel Wilds</h1>
+    <p>Генерация мира…</p>
+  </div>
 
-    <header>
-        <a href__="#hero" class="header-left">
-            <div class="header-logo">
-                <img src="logo-astro.png" alt="ВкусКипер">
-            </div>
-            <div class="logo-text">ВКУС<span>КИПЕР</span></div>
-        </a>
-        <nav class="nav-menu">
-            <a href__="#hero">Главная</a>
-            <a href__="#arcade">Game Zone</a>
-            <a href__="#gallery">Галерея</a>
-            <a href__="#reviews">Отзывы</a>
-            <a href__="#contacts">Контакты</a>
-        </nav>
-    </header>
-
-    <section id="hero" class="hero">
-        <div class="hero-content">
-            <div class="hero-logo-circle">
-                <img src="logo-astro.png" alt="ВкусКипер Космонавт">
-            </div>
-            <h1>ВКУС<span>КИПЕР</span></h1>
-            <p class="tagline">Самый атмосферный магазин импортных сладостей в центре Воронежа</p>
-            <a href__="#contacts" class="btn">ЗАЛЕТЕТЬ В ГОСТИ</a>
-        </div>
-    </section>
-
-    <div class="ticker-wrap">
-        <div class="ticker">
-            <div>TAKIS</div> <div>DR.PEPPER</div> <div>STRANGER THINGS</div>
-            <div>MORTAL KOMBAT</div> <div>MILKA</div> <div>MONSTER</div>
-            <div>SOUR PATCH</div> <div>ARIZONA</div> <div>OREO</div>
-            <div>TAKIS</div> <div>DR.PEPPER</div> <div>STRANGER THINGS</div>
-            <div>MORTAL KOMBAT</div> <div>MILKA</div> <div>MONSTER</div>
-            <div>SOUR PATCH</div> <div>ARIZONA</div> <div>OREO</div>
-        </div>
+  <div id="hud">
+    <div id="top-left">
+      <div class="badge" id="biome">Биом: —</div>
+      <div>Время: <span id="time">00:00</span></div>
+      <div id="status">
+        <div class="meter" id="health"></div>
+        <div class="meter" id="hunger"></div>
+      </div>
     </div>
+    <div>
+      <div id="hint">WASD — ходьба · пробел — прыжок · ЛКМ — ломать · ПКМ — ставить · E — инвентарь</div>
+      <div id="hotbar"></div>
+    </div>
+  </div>
 
-    <section id="arcade" class="section arcade-section">
-        <div class="arcade-content">
-            <h2>Game Zone</h2>
-            <p style="font-size: 1.3rem; margin-bottom: 20px; color: #fff;">Почувствуй вайб 90-х!</p>
-            <p style="color: #ccc; margin-bottom: 30px; font-size: 1.1rem;">У нас стоит настоящий аркадный кабинет с <strong>Mortal Kombat</strong>. Приходи с друзьями, устраивай турниры. Это абсолютно бесплатно для всех гостей.</p>
-            <a href__="#contacts" class="btn" style="background: var(--accent); color: #fff; box-shadow: 0 0 25px rgba(255, 0, 85, 0.4);">Fatality!</a>
+  <div id="crosshair"></div>
+
+  <div id="inventory">
+    <div class="panel">
+      <div>
+        <h2>Инвентарь</h2>
+        <div class="grid inventory" id="inventory-grid"></div>
+      </div>
+      <div class="crafting-area">
+        <h2>Крафт 3×3</h2>
+        <div class="grid crafting" id="crafting-grid"></div>
+        <div>
+          <div>Результат</div>
+          <div class="crafting-output" id="crafting-output"></div>
         </div>
-        <div class="arcade-img-wrap">
-            <img src="arcade.png" alt="Аркадный автомат">
-        </div>
-    </section>
+        <button id="craft-button" style="padding: 10px 12px; border-radius: 10px; border: none; background: #46ff9b; color: #05110f; font-weight: 700; cursor: pointer;">Создать</button>
+        <div style="font-size: 12px; color: #b6c4d8;">Рецепты: дерево → доски → палки · 3×3 — инструменты и блоки</div>
+      </div>
+    </div>
+  </div>
 
-    <section id="gallery" class="section">
-        <h2 class="section-title">Витрина <span>Вкусов</span></h2>
-        <div class="gallery-grid">
-            <div class="gallery-item"><img src="kinder.jpg" alt="Kinder"></div>
-            <div class="gallery-item"><img src="bears.png" alt="Мишки"></div>
-            <div class="gallery-item"><img src="toxic.jpg" alt="Toxic"></div>
-            <div class="gallery-item"><img src="sour.png" alt="Кислые"></div>
-            <div class="gallery-item"><img src="protein.jpg" alt="Protein"></div>
-            <div class="gallery-item"><img src="snacks.png" alt="Снеки"></div>
-            <div class="gallery-item"><img src="dr-pepper.png" alt="Dr Pepper"></div>
-            <div class="gallery-item"><img src="hero-bg.png" alt="Магазин"></div>
-        </div>
-    </section>
+  <div id="message"></div>
+  <div id="disclaimer">Оригинальные бренды и ассеты не используются. Независимый sandbox-проект.</div>
 
-    <section id="reviews" class="reviews-section">
-        <h2 class="section-title">Отзывы <span>Гостей</span></h2>
-        <div class="reviews-track">
-            <div class="review-card">
-                <div class="stars">★★★★★</div>
-                <p class="review-text">"Лучший магазин! Соевое мясо, снеки, напитки... Игровые автоматы — топ! Вы видели их еще где-то?"</p>
-                <div class="review-author"><i class="fas fa-user-astronaut"></i> Гость</div>
-            </div>
-            <div class="review-card">
-                <div class="stars">★★★★★</div>
-                <p class="review-text">"Нашел редкие вкусы Monster. Атмосфера супер, девочки на кассе милые. Спасибо!"</p>
-                <div class="review-author"><i class="fas fa-user-astronaut"></i> Антон В.</div>
-            </div>
-            <div class="review-card">
-                <div class="stars">★★★★★</div>
-                <p class="review-text">"Очень уютно. Цены на кислые конфеты радуют. Все ровненько и красиво. Впечатление хорошее."</p>
-                <div class="review-author"><i class="fas fa-user-astronaut"></i> Елизавета</div>
-            </div>
-            <div class="review-card">
-                <div class="stars">★★★★★</div>
-                <p class="review-text">"Обожаю ваши японские моти и Pocky! Всегда захожу, когда гуляю по проспекту."</p>
-                <div class="review-author"><i class="fas fa-user-astronaut"></i> Алина</div>
-            </div>
+  <script type="module">
+    import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.module.js";
+    import { PointerLockControls } from "https://cdn.jsdelivr.net/npm/three@0.158.0/examples/jsm/controls/PointerLockControls.js";
 
-            <div class="review-card">
-                <div class="stars">★★★★★</div>
-                <p class="review-text">"Лучший магазин! Соевое мясо, снеки, напитки... Игровые автоматы — топ! Вы видели их еще где-то?"</p>
-                <div class="review-author"><i class="fas fa-user-astronaut"></i> Гость</div>
-            </div>
-            <div class="review-card">
-                <div class="stars">★★★★★</div>
-                <p class="review-text">"Нашел редкие вкусы Monster. Атмосфера супер, девочки на кассе милые. Спасибо!"</p>
-                <div class="review-author"><i class="fas fa-user-astronaut"></i> Антон В.</div>
-            </div>
-            <div class="review-card">
-                <div class="stars">★★★★★</div>
-                <p class="review-text">"Очень уютно. Цены на кислые конфеты радуют. Все ровненько и красиво. Впечатление хорошее."</p>
-                <div class="review-author"><i class="fas fa-user-astronaut"></i> Елизавета</div>
-            </div>
-            <div class="review-card">
-                <div class="stars">★★★★★</div>
-                <p class="review-text">"Обожаю ваши японские моти и Pocky! Всегда захожу, когда гуляю по проспекту."</p>
-                <div class="review-author"><i class="fas fa-user-astronaut"></i> Алина</div>
-            </div>
-        </div>
-    </section>
+    const settings = {
+      chunkSize: 16,
+      worldHeight: 48,
+      viewDistance: 3,
+      dayLengthMinutes: 24,
+      gravity: 20,
+      jumpSpeed: 7.5,
+      walkSpeed: 5,
+      sprintSpeed: 8,
+      maxHealth: 10,
+      maxHunger: 10,
+    };
 
-    <section id="contacts" class="section">
-        <h2 class="section-title">Найди <span>Нас</span></h2>
+    const BLOCKS = {
+      AIR: 0,
+      GRASS: 1,
+      DIRT: 2,
+      STONE: 3,
+      SAND: 4,
+      SNOW: 5,
+      WATER: 6,
+      LAVA: 7,
+      LOG: 8,
+      LEAVES: 9,
+      COAL: 10,
+      IRON: 11,
+      GOLD: 12,
+      DIAMOND: 13,
+      PLANK: 14,
+      STICK: 15,
+      COBBLE: 16,
+    };
 
-        <div class="contacts-container">
-            <div class="contacts-info">
-                <div class="contact-row">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <div>
-                        <h3>Адрес</h3>
-                        <p style="font-size: 1rem;">Воронеж, пр-т Революции, 38</p>
-                        <p style="color:#999; font-size: 0.85rem;">1 этаж, вход с улицы</p>
-                    </div>
-                </div>
+    const BLOCK_NAMES = {
+      [BLOCKS.GRASS]: "Трава",
+      [BLOCKS.DIRT]: "Грунт",
+      [BLOCKS.STONE]: "Камень",
+      [BLOCKS.SAND]: "Песок",
+      [BLOCKS.SNOW]: "Снег",
+      [BLOCKS.WATER]: "Вода",
+      [BLOCKS.LAVA]: "Лава",
+      [BLOCKS.LOG]: "Древесина",
+      [BLOCKS.LEAVES]: "Листва",
+      [BLOCKS.COAL]: "Уголь",
+      [BLOCKS.IRON]: "Железо",
+      [BLOCKS.GOLD]: "Золото",
+      [BLOCKS.DIAMOND]: "Алмаз",
+      [BLOCKS.PLANK]: "Доски",
+      [BLOCKS.STICK]: "Палки",
+      [BLOCKS.COBBLE]: "Булышник",
+    };
 
-                <div class="contact-row">
-                    <i class="fas fa-clock"></i>
-                    <div>
-                        <h3>Время работы</h3>
-                        <p style="font-size: 1rem;">Пн-Чт: 12:00 - 23:00</p>
-                        <p style="color: var(--primary); font-weight: 700; font-size: 1rem;">Пт-Вс: 12:00 - 02:00</p>
-                    </div>
-                </div>
+    const TOOL_TYPES = ["кирка", "топор", "лопата", "меч"];
+    const TOOL_MATERIALS = ["деревянный", "каменный", "железный", "алмазный"];
 
-                <div class="contact-row">
-                    <i class="fas fa-hashtag"></i>
-                    <div>
-                        <h3>Соцсети</h3>
-                        <a href__="https://t.me/vkuskeeper" target="_blank" class="social-btn"><i class="fab fa-telegram-plane"></i> Канал</a>
-                        <a href__="https://t.me/tonoholic" target="_blank" class="social-btn"><i class="fas fa-user"></i> Менеджер</a>
-                        <a href__="https://www.tiktok.com/@vkuskeeper" target="_blank" class="social-btn tiktok"><i class="fab fa-tiktok"></i> TikTok</a>
-                    </div>
-                </div>
-            </div>
+    const TOOL_STATS = {
+      деревянный: { durability: 60, speed: 1.0 },
+      каменный: { durability: 132, speed: 1.4 },
+      железный: { durability: 250, speed: 1.8 },
+      алмазный: { durability: 1561, speed: 2.2 },
+    };
 
-            <div class="contacts-map">
-                <iframe src="https://yandex.ru/map-widget/v1/?ll=39.206536%2C51.667489&mode=search&oid=72942634116&ol=biz&z=17" allowfullscreen="true"></iframe>
-            </div>
-        </div>
-    </section>
+    const blockBreakTimes = {
+      [BLOCKS.GRASS]: 0.4,
+      [BLOCKS.DIRT]: 0.4,
+      [BLOCKS.SAND]: 0.3,
+      [BLOCKS.SNOW]: 0.3,
+      [BLOCKS.STONE]: 1.5,
+      [BLOCKS.COBBLE]: 1.2,
+      [BLOCKS.LOG]: 1.0,
+      [BLOCKS.LEAVES]: 0.2,
+      [BLOCKS.COAL]: 1.2,
+      [BLOCKS.IRON]: 1.5,
+      [BLOCKS.GOLD]: 1.6,
+      [BLOCKS.DIAMOND]: 1.8,
+    };
 
-    <footer style="text-align: center; padding: 30px; color: #555; font-size: 0.9rem; background: rgba(0,0,0,0.5);">
-        <p>&copy; 2026 ВкусКипер. Все права защищены.</p>
-    </footer>
+    const textures = {};
 
+    const biomeNames = ["Лес", "Равнина", "Пустыня", "Джунгли", "Снежные поля", "Горы", "Океан"];
+
+    const worldState = {
+      chunks: new Map(),
+      modified: new Map(),
+      time: 0,
+      seed: Date.now() % 100000,
+      lastSave: 0,
+    };
+
+    const inventory = {
+      slots: Array(36).fill(null),
+      hotbar: Array(9).fill(null),
+      crafting: Array(9).fill(null),
+      selected: 0,
+    };
+
+    const playerState = {
+      health: settings.maxHealth,
+      hunger: settings.maxHunger,
+      velocity: new THREE.Vector3(),
+      onGround: false,
+      deathTimer: 0,
+    };
+
+    const mobs = [];
+
+    const hud = {
+      hotbar: document.getElementById("hotbar"),
+      inventory: document.getElementById("inventory"),
+      inventoryGrid: document.getElementById("inventory-grid"),
+      craftingGrid: document.getElementById("crafting-grid"),
+      craftingOutput: document.getElementById("crafting-output"),
+      craftButton: document.getElementById("craft-button"),
+      message: document.getElementById("message"),
+      biome: document.getElementById("biome"),
+      time: document.getElementById("time"),
+      health: document.getElementById("health"),
+      hunger: document.getElementById("hunger"),
+      loader: document.getElementById("loader"),
+    };
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.8));
+    document.body.appendChild(renderer.domElement);
+
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x6fc1ff);
+
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 300);
+    camera.position.set(0, 30, 0);
+
+    const controls = new PointerLockControls(camera, renderer.domElement);
+    scene.add(controls.getObject());
+
+    const ambient = new THREE.AmbientLight(0xffffff, 0.4);
+    const sun = new THREE.DirectionalLight(0xffffff, 1.0);
+    sun.position.set(50, 100, 20);
+    scene.add(ambient, sun);
+
+    const blockGeometry = new THREE.BoxGeometry(1, 1, 1);
+
+    function createTexture(color, accent) {
+      const canvas = document.createElement("canvas");
+      canvas.width = 16;
+      canvas.height = 16;
+      const ctx = canvas.getContext("2d");
+      ctx.fillStyle = color;
+      ctx.fillRect(0, 0, 16, 16);
+      ctx.fillStyle = accent;
+      for (let i = 0; i < 20; i++) {
+        ctx.fillRect(Math.random() * 16, Math.random() * 16, 2, 2);
+      }
+      const texture = new THREE.CanvasTexture(canvas);
+      texture.magFilter = THREE.NearestFilter;
+      texture.minFilter = THREE.NearestFilter;
+      return texture;
+    }
+
+    const blockMaterials = {
+      [BLOCKS.GRASS]: new THREE.MeshLambertMaterial({ map: createTexture("#3fbf5b", "#2e8a43") }),
+      [BLOCKS.DIRT]: new THREE.MeshLambertMaterial({ map: createTexture("#7a5a3a", "#5a412a") }),
+      [BLOCKS.STONE]: new THREE.MeshLambertMaterial({ map: createTexture("#9aa1a7", "#6f747a") }),
+      [BLOCKS.COBBLE]: new THREE.MeshLambertMaterial({ map: createTexture("#80858a", "#606468") }),
+      [BLOCKS.SAND]: new THREE.MeshLambertMaterial({ map: createTexture("#dfc88b", "#c9af71") }),
+      [BLOCKS.SNOW]: new THREE.MeshLambertMaterial({ map: createTexture("#eef5ff", "#c8d8f0") }),
+      [BLOCKS.WATER]: new THREE.MeshLambertMaterial({ color: 0x3b7dff, transparent: true, opacity: 0.7 }),
+      [BLOCKS.LAVA]: new THREE.MeshLambertMaterial({ color: 0xff6b2c, emissive: 0xff4d00, emissiveIntensity: 0.6 }),
+      [BLOCKS.LOG]: new THREE.MeshLambertMaterial({ map: createTexture("#8b6b3f", "#6f552f") }),
+      [BLOCKS.LEAVES]: new THREE.MeshLambertMaterial({ map: createTexture("#2e8f4e", "#3bb863"), transparent: true, opacity: 0.9 }),
+      [BLOCKS.COAL]: new THREE.MeshLambertMaterial({ map: createTexture("#3f4347", "#1c1f21") }),
+      [BLOCKS.IRON]: new THREE.MeshLambertMaterial({ map: createTexture("#c9b29b", "#9b8a78") }),
+      [BLOCKS.GOLD]: new THREE.MeshLambertMaterial({ map: createTexture("#f1c84c", "#d2a02c") }),
+      [BLOCKS.DIAMOND]: new THREE.MeshLambertMaterial({ map: createTexture("#69d4e8", "#3aa0b6") }),
+      [BLOCKS.PLANK]: new THREE.MeshLambertMaterial({ map: createTexture("#ba8b55", "#9b6d3c") }),
+    };
+
+    const blockSolid = new Set([
+      BLOCKS.GRASS, BLOCKS.DIRT, BLOCKS.STONE, BLOCKS.SAND, BLOCKS.SNOW, BLOCKS.LOG, BLOCKS.LEAVES,
+      BLOCKS.COAL, BLOCKS.IRON, BLOCKS.GOLD, BLOCKS.DIAMOND, BLOCKS.PLANK, BLOCKS.COBBLE,
+    ]);
+
+    const rng = mulberry32(worldState.seed);
+
+    function mulberry32(a) {
+      return function() {
+        let t = (a += 0x6d2b79f5);
+        t = Math.imul(t ^ (t >>> 15), t | 1);
+        t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+        return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+      };
+    }
+
+    function noise2(x, z) {
+      const s = Math.sin(x * 127.1 + z * 311.7 + worldState.seed) * 43758.5453;
+      return s - Math.floor(s);
+    }
+
+    function smoothNoise(x, z) {
+      const xi = Math.floor(x);
+      const zi = Math.floor(z);
+      const xf = x - xi;
+      const zf = z - zi;
+      const n00 = noise2(xi, zi);
+      const n10 = noise2(xi + 1, zi);
+      const n01 = noise2(xi, zi + 1);
+      const n11 = noise2(xi + 1, zi + 1);
+      const u = xf * xf * (3 - 2 * xf);
+      const v = zf * zf * (3 - 2 * zf);
+      return lerp(lerp(n00, n10, u), lerp(n01, n11, u), v);
+    }
+
+    function fbm(x, z, octaves = 4) {
+      let value = 0;
+      let amplitude = 0.5;
+      let frequency = 0.05;
+      for (let i = 0; i < octaves; i++) {
+        value += smoothNoise(x * frequency, z * frequency) * amplitude;
+        amplitude *= 0.5;
+        frequency *= 2;
+      }
+      return value;
+    }
+
+    function caveNoise(x, y, z) {
+      const s = Math.sin(x * 12.9898 + y * 78.233 + z * 37.719 + worldState.seed) * 43758.5453;
+      return s - Math.floor(s);
+    }
+
+    function lerp(a, b, t) { return a + (b - a) * t; }
+
+    function biomeAt(x, z, height) {
+      const temperature = fbm(x + 1000, z + 1000, 3);
+      const moisture = fbm(x - 1000, z - 1000, 3);
+      if (height < 8) return "Океан";
+      if (height > 28 && temperature < 0.5) return "Горы";
+      if (temperature < 0.3) return "Снежные поля";
+      if (temperature > 0.7 && moisture < 0.4) return "Пустыня";
+      if (temperature > 0.65 && moisture > 0.6) return "Джунгли";
+      if (moisture > 0.6) return "Лес";
+      return "Равнина";
+    }
+
+    function terrainHeight(x, z) {
+      const base = fbm(x, z) * 16 + 12;
+      const mountains = Math.pow(fbm(x + 400, z - 200), 3) * 30;
+      return Math.floor(base + mountains);
+    }
+
+    function createChunk(cx, cz) {
+      const key = `${cx},${cz}`;
+      if (worldState.chunks.has(key)) return;
+
+      const chunk = {
+        cx,
+        cz,
+        blocks: new Array(settings.chunkSize * settings.worldHeight * settings.chunkSize).fill(BLOCKS.AIR),
+        mesh: new THREE.Group(),
+      };
+
+      for (let x = 0; x < settings.chunkSize; x++) {
+        for (let z = 0; z < settings.chunkSize; z++) {
+          const worldX = cx * settings.chunkSize + x;
+          const worldZ = cz * settings.chunkSize + z;
+          const height = terrainHeight(worldX, worldZ);
+          const biome = biomeAt(worldX, worldZ, height);
+          const isSnow = biome === "Снежные поля" || biome === "Горы";
+          const isDesert = biome === "Пустыня";
+          const isJungle = biome === "Джунгли";
+
+          for (let y = 0; y < settings.worldHeight; y++) {
+            let block = BLOCKS.AIR;
+            if (y <= height) {
+              if (y === height) {
+                if (height < 8) block = BLOCKS.SAND;
+                else if (isDesert) block = BLOCKS.SAND;
+                else if (isSnow) block = BLOCKS.SNOW;
+                else block = BLOCKS.GRASS;
+              } else if (y > height - 3) {
+                block = isDesert ? BLOCKS.SAND : BLOCKS.DIRT;
+              } else {
+                block = BLOCKS.STONE;
+              }
+
+              if (y < 20 && block === BLOCKS.STONE) {
+                const oreRoll = noise2(worldX + y * 2, worldZ + y * 3);
+                if (oreRoll > 0.92) block = BLOCKS.COAL;
+                if (oreRoll > 0.96) block = BLOCKS.IRON;
+                if (oreRoll > 0.98) block = BLOCKS.GOLD;
+                if (oreRoll > 0.993) block = BLOCKS.DIAMOND;
+              }
+
+              const cave = caveNoise(worldX, y, worldZ);
+              if (y < height - 2 && cave > 0.87) block = BLOCKS.AIR;
+            } else if (y < 8) {
+              block = BLOCKS.WATER;
+            }
+
+            setBlockInChunk(chunk, x, y, z, block);
+          }
+
+          if (height > 8) {
+            const treeChance = rng();
+            if ((biome === "Лес" && treeChance > 0.82) || (isJungle && treeChance > 0.6)) {
+              placeTree(chunk, x, height + 1, z, isJungle);
+            }
+          }
+        }
+      }
+
+      buildChunkMesh(chunk);
+      worldState.chunks.set(key, chunk);
+      scene.add(chunk.mesh);
+    }
+
+    function setBlockInChunk(chunk, x, y, z, block) {
+      if (y < 0 || y >= settings.worldHeight) return;
+      const idx = x + settings.chunkSize * (z + settings.chunkSize * y);
+      chunk.blocks[idx] = block;
+    }
+
+    function getBlockFromChunk(chunk, x, y, z) {
+      if (y < 0 || y >= settings.worldHeight) return BLOCKS.AIR;
+      const idx = x + settings.chunkSize * (z + settings.chunkSize * y);
+      return chunk.blocks[idx];
+    }
+
+    function placeTree(chunk, x, y, z, tall) {
+      const height = tall ? 6 : 4;
+      for (let i = 0; i < height; i++) {
+        setBlockInChunk(chunk, x, y + i, z, BLOCKS.LOG);
+      }
+      for (let lx = -2; lx <= 2; lx++) {
+        for (let lz = -2; lz <= 2; lz++) {
+          for (let ly = height - 2; ly <= height; ly++) {
+            if (Math.abs(lx) + Math.abs(lz) + (ly - (height - 1)) < 5) {
+              setBlockInChunk(chunk, x + lx, y + ly, z + lz, BLOCKS.LEAVES);
+            }
+          }
+        }
+      }
+    }
+
+    function buildChunkMesh(chunk) {
+      chunk.mesh.clear();
+      const instances = {};
+      for (const type of Object.values(BLOCKS)) {
+        if (type === BLOCKS.AIR || type === BLOCKS.WATER || type === BLOCKS.LAVA) continue;
+        instances[type] = [];
+      }
+
+      const waterInstances = [];
+      const lavaInstances = [];
+
+      for (let y = 0; y < settings.worldHeight; y++) {
+        for (let z = 0; z < settings.chunkSize; z++) {
+          for (let x = 0; x < settings.chunkSize; x++) {
+            const block = getBlockFromChunk(chunk, x, y, z);
+            if (block === BLOCKS.AIR) continue;
+            if (block === BLOCKS.WATER) {
+              waterInstances.push({ x, y, z });
+              continue;
+            }
+            if (block === BLOCKS.LAVA) {
+              lavaInstances.push({ x, y, z });
+              continue;
+            }
+            if (instances[block]) instances[block].push({ x, y, z });
+          }
+        }
+      }
+
+      for (const [block, entries] of Object.entries(instances)) {
+        if (!entries.length) continue;
+        const material = blockMaterials[block];
+        const mesh = new THREE.InstancedMesh(blockGeometry, material, entries.length);
+        entries.forEach((pos, i) => {
+          const matrix = new THREE.Matrix4().makeTranslation(
+            pos.x + chunk.cx * settings.chunkSize,
+            pos.y,
+            pos.z + chunk.cz * settings.chunkSize
+          );
+          mesh.setMatrixAt(i, matrix);
+        });
+        chunk.mesh.add(mesh);
+      }
+
+      if (waterInstances.length) {
+        const mesh = new THREE.InstancedMesh(blockGeometry, blockMaterials[BLOCKS.WATER], waterInstances.length);
+        waterInstances.forEach((pos, i) => {
+          const matrix = new THREE.Matrix4().makeTranslation(
+            pos.x + chunk.cx * settings.chunkSize,
+            pos.y,
+            pos.z + chunk.cz * settings.chunkSize
+          );
+          mesh.setMatrixAt(i, matrix);
+        });
+        chunk.mesh.add(mesh);
+      }
+
+      if (lavaInstances.length) {
+        const mesh = new THREE.InstancedMesh(blockGeometry, blockMaterials[BLOCKS.LAVA], lavaInstances.length);
+        lavaInstances.forEach((pos, i) => {
+          const matrix = new THREE.Matrix4().makeTranslation(
+            pos.x + chunk.cx * settings.chunkSize,
+            pos.y,
+            pos.z + chunk.cz * settings.chunkSize
+          );
+          mesh.setMatrixAt(i, matrix);
+        });
+        chunk.mesh.add(mesh);
+      }
+    }
+
+    function chunkKey(cx, cz) { return `${cx},${cz}`; }
+
+    function getChunk(cx, cz) { return worldState.chunks.get(chunkKey(cx, cz)); }
+
+    function worldToChunk(x, z) {
+      return {
+        cx: Math.floor(x / settings.chunkSize),
+        cz: Math.floor(z / settings.chunkSize),
+        lx: ((x % settings.chunkSize) + settings.chunkSize) % settings.chunkSize,
+        lz: ((z % settings.chunkSize) + settings.chunkSize) % settings.chunkSize,
+      };
+    }
+
+    function getBlock(x, y, z) {
+      const { cx, cz, lx, lz } = worldToChunk(x, z);
+      const chunk = getChunk(cx, cz);
+      if (!chunk) return BLOCKS.AIR;
+      return getBlockFromChunk(chunk, lx, y, lz);
+    }
+
+    function setBlock(x, y, z, block) {
+      const { cx, cz, lx, lz } = worldToChunk(x, z);
+      const chunk = getChunk(cx, cz);
+      if (!chunk) return;
+      setBlockInChunk(chunk, lx, y, lz, block);
+      buildChunkMesh(chunk);
+      markModified(cx, cz, lx, y, lz, block);
+    }
+
+    function markModified(cx, cz, lx, y, lz, block) {
+      const key = chunkKey(cx, cz);
+      const mod = worldState.modified.get(key) || {};
+      mod[`${lx},${y},${lz}`] = block;
+      worldState.modified.set(key, mod);
+    }
+
+    function applyModified(chunk) {
+      const key = chunkKey(chunk.cx, chunk.cz);
+      const mod = worldState.modified.get(key);
+      if (!mod) return;
+      Object.entries(mod).forEach(([pos, block]) => {
+        const [x, y, z] = pos.split(",").map(Number);
+        setBlockInChunk(chunk, x, y, z, block);
+      });
+    }
+
+    function loadChunksAround() {
+      const pos = controls.getObject().position;
+      const center = worldToChunk(Math.floor(pos.x), Math.floor(pos.z));
+      for (let dx = -settings.viewDistance; dx <= settings.viewDistance; dx++) {
+        for (let dz = -settings.viewDistance; dz <= settings.viewDistance; dz++) {
+          const cx = center.cx + dx;
+          const cz = center.cz + dz;
+          createChunk(cx, cz);
+          const chunk = getChunk(cx, cz);
+          if (chunk && !chunk.appliedMod) {
+            applyModified(chunk);
+            buildChunkMesh(chunk);
+            chunk.appliedMod = true;
+          }
+        }
+      }
+    }
+
+    function updateBiomeLabel() {
+      const pos = controls.getObject().position;
+      const height = terrainHeight(Math.floor(pos.x), Math.floor(pos.z));
+      const biome = biomeAt(Math.floor(pos.x), Math.floor(pos.z), height);
+      hud.biome.textContent = `Биом: ${biome}`;
+    }
+
+    function showMessage(text) {
+      hud.message.textContent = text;
+      hud.message.classList.add("show");
+      clearTimeout(showMessage.timer);
+      showMessage.timer = setTimeout(() => hud.message.classList.remove("show"), 2400);
+    }
+
+    function initInventory() {
+      const starter = [
+        { id: BLOCKS.LOG, count: 6 },
+        { id: BLOCKS.STONE, count: 8 },
+        { id: BLOCKS.SAND, count: 4 },
+      ];
+      starter.forEach((item, i) => { inventory.hotbar[i] = { ...item }; });
+      renderHotbar();
+      renderInventory();
+    }
+
+    function renderHotbar() {
+      hud.hotbar.innerHTML = "";
+      inventory.hotbar.forEach((item, index) => {
+        const slot = document.createElement("div");
+        slot.className = "slot" + (index === inventory.selected ? " active" : "");
+        slot.textContent = item ? displayItem(item) : "";
+        if (item && item.count > 1) {
+          const count = document.createElement("span");
+          count.textContent = item.count;
+          slot.appendChild(count);
+        }
+        hud.hotbar.appendChild(slot);
+      });
+    }
+
+    function renderInventory() {
+      hud.inventoryGrid.innerHTML = "";
+      inventory.slots.forEach((item, index) => {
+        const slot = createInventorySlot(item, index, false);
+        hud.inventoryGrid.appendChild(slot);
+      });
+      hud.craftingGrid.innerHTML = "";
+      inventory.crafting.forEach((item, index) => {
+        const slot = createInventorySlot(item, index, true);
+        hud.craftingGrid.appendChild(slot);
+      });
+      renderCraftingOutput();
+    }
+
+    function createInventorySlot(item, index, isCrafting) {
+      const slot = document.createElement("div");
+      slot.className = "slot";
+      slot.textContent = item ? displayItem(item) : "";
+      if (item && item.count > 1) {
+        const count = document.createElement("span");
+        count.textContent = item.count;
+        slot.appendChild(count);
+      }
+      slot.addEventListener("click", () => {
+        if (heldItem) {
+          swapItem(isCrafting ? inventory.crafting : inventory.slots, index);
+        } else if (item) {
+          pickUpItem(isCrafting ? inventory.crafting : inventory.slots, index);
+        }
+        renderInventory();
+      });
+      return slot;
+    }
+
+    function displayItem(item) {
+      if (!item) return "";
+      if (item.tool) {
+        return `${item.material} ${item.tool}`;
+      }
+      return BLOCK_NAMES[item.id] || "?";
+    }
+
+    function pickUpItem(container, index) {
+      heldItem = container[index];
+      container[index] = null;
+    }
+
+    function swapItem(container, index) {
+      const temp = container[index];
+      container[index] = heldItem;
+      heldItem = temp;
+    }
+
+    function addItem(item) {
+      const target = inventory.slots.concat(inventory.hotbar);
+      for (let i = 0; i < target.length; i++) {
+        const container = i < inventory.slots.length ? inventory.slots : inventory.hotbar;
+        const idx = i < inventory.slots.length ? i : i - inventory.slots.length;
+        const slot = container[idx];
+        if (slot && slot.id === item.id && !slot.tool) {
+          slot.count += item.count;
+          return true;
+        }
+      }
+      for (let i = 0; i < target.length; i++) {
+        const container = i < inventory.slots.length ? inventory.slots : inventory.hotbar;
+        const idx = i < inventory.slots.length ? i : i - inventory.slots.length;
+        if (!container[idx]) {
+          container[idx] = { ...item };
+          return true;
+        }
+      }
+      return false;
+    }
+
+    function renderCraftingOutput() {
+      hud.craftingOutput.textContent = "";
+      const recipe = matchRecipe();
+      if (recipe) {
+        hud.craftingOutput.textContent = displayItem(recipe.output);
+      }
+    }
+
+    function matchRecipe() {
+      const grid = inventory.crafting.map(item => item ? item.id || `${item.material}-${item.tool}` : null);
+      const simpleGrid = grid.map(x => x || null);
+
+      const countOf = (id) => simpleGrid.filter(x => x === id).length;
+
+      if (countOf(BLOCKS.LOG) >= 1) {
+        return { output: { id: BLOCKS.PLANK, count: 4 }, ingredients: [{ id: BLOCKS.LOG, count: 1 }] };
+      }
+      if (countOf(BLOCKS.PLANK) >= 2) {
+        return { output: { id: BLOCKS.STICK, count: 4 }, ingredients: [{ id: BLOCKS.PLANK, count: 2 }] };
+      }
+
+      const toolRecipe = getToolRecipe();
+      if (toolRecipe) return toolRecipe;
+
+      return null;
+    }
+
+    function getToolRecipe() {
+      const grid = inventory.crafting;
+      const ids = grid.map(item => item ? item.id : null);
+      const stickCount = ids.filter(id => id === BLOCKS.STICK).length;
+      if (stickCount < 2) return null;
+      const materials = [BLOCKS.PLANK, BLOCKS.COBBLE, BLOCKS.IRON, BLOCKS.DIAMOND];
+      const materialMatch = materials.find(mat => ids.filter(id => id === mat).length >= 3);
+      if (!materialMatch) return null;
+      let materialName = "деревянный";
+      if (materialMatch === BLOCKS.COBBLE) materialName = "каменный";
+      if (materialMatch === BLOCKS.IRON) materialName = "железный";
+      if (materialMatch === BLOCKS.DIAMOND) materialName = "алмазный";
+
+      const tool = TOOL_TYPES[0];
+      return {
+        output: { tool, material: materialName, durability: TOOL_STATS[materialName].durability },
+        ingredients: [{ id: materialMatch, count: 3 }, { id: BLOCKS.STICK, count: 2 }],
+      };
+    }
+
+    function consumeIngredients(recipe) {
+      if (!recipe) return;
+      recipe.ingredients.forEach(ing => {
+        let remaining = ing.count;
+        for (let i = 0; i < inventory.crafting.length; i++) {
+          const item = inventory.crafting[i];
+          if (item && item.id === ing.id && remaining > 0) {
+            const take = Math.min(item.count, remaining);
+            item.count -= take;
+            remaining -= take;
+            if (item.count <= 0) inventory.crafting[i] = null;
+          }
+        }
+      });
+    }
+
+    function craftItem() {
+      const recipe = matchRecipe();
+      if (!recipe) return showMessage("Нет подходящего рецепта.");
+      if (recipe.output.tool) {
+        addItem({ ...recipe.output, count: 1 });
+      } else {
+        addItem({ ...recipe.output });
+      }
+      consumeIngredients(recipe);
+      renderInventory();
+      renderHotbar();
+      showMessage("Создано!");
+    }
+
+    hud.craftButton.addEventListener("click", craftItem);
+
+    let heldItem = null;
+
+    function renderStatus() {
+      hud.health.innerHTML = "";
+      for (let i = 0; i < settings.maxHealth; i++) {
+        const heart = document.createElement("div");
+        heart.className = "heart" + (i >= playerState.health ? " empty" : "");
+        hud.health.appendChild(heart);
+      }
+      hud.hunger.innerHTML = "";
+      for (let i = 0; i < settings.maxHunger; i++) {
+        const food = document.createElement("div");
+        food.className = "food" + (i >= playerState.hunger ? " empty" : "");
+        hud.hunger.appendChild(food);
+      }
+    }
+
+    function updateTime(delta) {
+      worldState.time += delta;
+      const daySeconds = settings.dayLengthMinutes * 60;
+      const timeOfDay = (worldState.time % daySeconds) / daySeconds;
+      const angle = timeOfDay * Math.PI * 2;
+      sun.position.set(Math.cos(angle) * 50, Math.sin(angle) * 80, Math.sin(angle) * 50);
+      const isNight = timeOfDay > 0.55 || timeOfDay < 0.2;
+      ambient.intensity = isNight ? 0.2 : 0.45;
+      sun.intensity = isNight ? 0.15 : 1.1;
+      scene.background = new THREE.Color(isNight ? 0x05060f : 0x6fc1ff);
+
+      const minutes = Math.floor(timeOfDay * 24 * 60);
+      const hours = Math.floor(minutes / 60).toString().padStart(2, "0");
+      const mins = (minutes % 60).toString().padStart(2, "0");
+      hud.time.textContent = `${hours}:${mins}`;
+
+      return isNight;
+    }
+
+    const raycaster = new THREE.Raycaster();
+    const breakState = { active: false, block: null, progress: 0 };
+
+    function raycastBlock() {
+      raycaster.setFromCamera(new THREE.Vector2(0, 0), camera);
+      const intersects = raycaster.intersectObjects(scene.children, true);
+      for (const hit of intersects) {
+        if (!hit.object.isInstancedMesh) continue;
+        const pos = new THREE.Vector3();
+        pos.setFromMatrixPosition(hit.object.matrixWorld);
+        const instancePos = new THREE.Vector3();
+        hit.object.getMatrixAt(hit.instanceId, new THREE.Matrix4()).decompose(instancePos, new THREE.Quaternion(), new THREE.Vector3());
+        const worldPos = instancePos.clone();
+        worldPos.x += hit.object.parent.position.x;
+        worldPos.z += hit.object.parent.position.z;
+        return { hit, position: worldPos };
+      }
+      return null;
+    }
+
+    function breakBlock() {
+      const result = raycastBlock();
+      if (!result) return;
+      const { position } = result;
+      const block = getBlock(Math.round(position.x), Math.round(position.y), Math.round(position.z));
+      if (block === BLOCKS.AIR || block === BLOCKS.WATER || block === BLOCKS.LAVA) return;
+      setBlock(Math.round(position.x), Math.round(position.y), Math.round(position.z), BLOCKS.AIR);
+      addItem({ id: block, count: 1 });
+      renderHotbar();
+      showMessage(`Добыто: ${BLOCK_NAMES[block]}`);
+    }
+
+    function placeBlock() {
+      const selected = inventory.hotbar[inventory.selected];
+      if (!selected || selected.tool) return;
+      const result = raycastBlock();
+      if (!result) return;
+      const hit = result.hit;
+      const normal = hit.face.normal;
+      const position = result.position.clone().add(normal);
+      const x = Math.round(position.x);
+      const y = Math.round(position.y);
+      const z = Math.round(position.z);
+      if (getBlock(x, y, z) !== BLOCKS.AIR) return;
+      setBlock(x, y, z, selected.id);
+      selected.count -= 1;
+      if (selected.count <= 0) inventory.hotbar[inventory.selected] = null;
+      renderHotbar();
+    }
+
+    function updatePhysics(delta) {
+      const velocity = playerState.velocity;
+      velocity.y -= settings.gravity * delta;
+
+      const direction = new THREE.Vector3();
+      const forward = new THREE.Vector3();
+      camera.getWorldDirection(forward);
+      forward.y = 0;
+      forward.normalize();
+      const right = new THREE.Vector3().crossVectors(camera.up, forward).normalize();
+
+      if (keys["KeyW"]) direction.add(forward);
+      if (keys["KeyS"]) direction.sub(forward);
+      if (keys["KeyA"]) direction.add(right);
+      if (keys["KeyD"]) direction.sub(right);
+
+      const speed = keys["ShiftLeft"] ? settings.sprintSpeed : settings.walkSpeed;
+      if (direction.lengthSq() > 0) {
+        direction.normalize();
+        velocity.x = direction.x * speed;
+        velocity.z = direction.z * speed;
+      } else {
+        velocity.x = 0;
+        velocity.z = 0;
+      }
+
+      const pos = controls.getObject().position;
+      const nextPos = pos.clone().addScaledVector(velocity, delta);
+      const radius = 0.3;
+      const height = 1.7;
+      playerState.onGround = false;
+
+      for (let axis = 0; axis < 3; axis++) {
+        const testPos = pos.clone();
+        testPos.setComponent(axis, nextPos.getComponent(axis));
+        if (!collides(testPos, radius, height)) {
+          pos.copy(testPos);
+        } else if (axis === 1) {
+          velocity.y = 0;
+          if (velocity.y <= 0) playerState.onGround = true;
+        } else {
+          velocity.setComponent(axis, 0);
+        }
+      }
+
+      if (pos.y < 2) {
+        pos.y = 20;
+        velocity.y = 0;
+      }
+    }
+
+    function collides(position, radius, height) {
+      const minX = Math.floor(position.x - radius);
+      const maxX = Math.floor(position.x + radius);
+      const minY = Math.floor(position.y);
+      const maxY = Math.floor(position.y + height);
+      const minZ = Math.floor(position.z - radius);
+      const maxZ = Math.floor(position.z + radius);
+      for (let x = minX; x <= maxX; x++) {
+        for (let y = minY; y <= maxY; y++) {
+          for (let z = minZ; z <= maxZ; z++) {
+            const block = getBlock(x, y, z);
+            if (blockSolid.has(block)) return true;
+          }
+        }
+      }
+      return false;
+    }
+
+    function spawnMob(type, isHostile) {
+      const geometry = new THREE.BoxGeometry(0.9, 0.9, 0.9);
+      const material = new THREE.MeshLambertMaterial({ color: isHostile ? 0xff4d4d : 0x6ce3a9 });
+      const mesh = new THREE.Mesh(geometry, material);
+      const pos = controls.getObject().position.clone();
+      pos.x += (rng() - 0.5) * 30;
+      pos.z += (rng() - 0.5) * 30;
+      pos.y = terrainHeight(pos.x, pos.z) + 2;
+      mesh.position.copy(pos);
+      scene.add(mesh);
+      mobs.push({ mesh, isHostile, health: 5 });
+    }
+
+    function updateMobs(delta, isNight) {
+      if (isNight && mobs.filter(m => m.isHostile).length < 6 && rng() > 0.97) {
+        spawnMob("shadow", true);
+      }
+      if (!isNight && mobs.filter(m => !m.isHostile).length < 4 && rng() > 0.98) {
+        spawnMob("critter", false);
+      }
+      const playerPos = controls.getObject().position;
+      mobs.forEach((mob) => {
+        const direction = playerPos.clone().sub(mob.mesh.position);
+        const distance = direction.length();
+        direction.normalize();
+        if (mob.isHostile) {
+          mob.mesh.position.addScaledVector(direction, delta * 2);
+          if (distance < 1.5) {
+            playerState.health = Math.max(0, playerState.health - 0.02);
+          }
+        } else {
+          mob.mesh.position.addScaledVector(direction, -delta * 0.5);
+        }
+      });
+    }
+
+    function updateNeeds(delta) {
+      playerState.hunger = Math.max(0, playerState.hunger - delta * 0.01);
+      if (playerState.hunger === 0) {
+        playerState.health = Math.max(0, playerState.health - delta * 0.02);
+      } else if (playerState.hunger > 7 && playerState.health < settings.maxHealth) {
+        playerState.health = Math.min(settings.maxHealth, playerState.health + delta * 0.01);
+      }
+      if (playerState.health <= 0) {
+        playerState.deathTimer += delta;
+        if (playerState.deathTimer > 1.5) {
+          respawn();
+        }
+      }
+    }
+
+    function respawn() {
+      playerState.health = settings.maxHealth;
+      playerState.hunger = settings.maxHunger;
+      playerState.deathTimer = 0;
+      const pos = controls.getObject().position;
+      pos.set(0, 30, 0);
+      showMessage("Вы возродились.");
+    }
+
+    function updateFluids() {
+      if (Math.random() > 0.1) return;
+      const pos = controls.getObject().position;
+      const cx = Math.floor(pos.x / settings.chunkSize);
+      const cz = Math.floor(pos.z / settings.chunkSize);
+      for (let dx = -1; dx <= 1; dx++) {
+        for (let dz = -1; dz <= 1; dz++) {
+          const chunk = getChunk(cx + dx, cz + dz);
+          if (!chunk) continue;
+          for (let y = 1; y < settings.worldHeight - 1; y++) {
+            for (let x = 0; x < settings.chunkSize; x++) {
+              for (let z = 0; z < settings.chunkSize; z++) {
+                const block = getBlockFromChunk(chunk, x, y, z);
+                if (block !== BLOCKS.WATER && block !== BLOCKS.LAVA) continue;
+                const worldX = x + chunk.cx * settings.chunkSize;
+                const worldZ = z + chunk.cz * settings.chunkSize;
+                const neighbors = [
+                  [worldX + 1, y, worldZ], [worldX - 1, y, worldZ], [worldX, y, worldZ + 1], [worldX, y, worldZ - 1],
+                  [worldX, y - 1, worldZ],
+                ];
+                neighbors.forEach(([nx, ny, nz]) => {
+                  if (getBlock(nx, ny, nz) === BLOCKS.AIR && Math.random() > 0.6) {
+                    setBlock(nx, ny, nz, block);
+                  }
+                });
+              }
+            }
+          }
+        }
+      }
+    }
+
+    function saveWorld() {
+      const data = {
+        seed: worldState.seed,
+        modified: Array.from(worldState.modified.entries()),
+        inventory: { slots: inventory.slots, hotbar: inventory.hotbar },
+        time: worldState.time,
+      };
+      localStorage.setItem("voxel_wilds_save", JSON.stringify(data));
+      worldState.lastSave = performance.now();
+    }
+
+    function loadWorld() {
+      const raw = localStorage.getItem("voxel_wilds_save");
+      if (!raw) return;
+      try {
+        const data = JSON.parse(raw);
+        worldState.seed = data.seed || worldState.seed;
+        worldState.modified = new Map(data.modified || []);
+        worldState.time = data.time || 0;
+        if (data.inventory) {
+          inventory.slots = data.inventory.slots || inventory.slots;
+          inventory.hotbar = data.inventory.hotbar || inventory.hotbar;
+        }
+      } catch (e) {
+        console.warn(e);
+      }
+    }
+
+    function gameLoop() {
+      const now = performance.now();
+      const delta = Math.min(0.05, (now - lastFrame) / 1000);
+      lastFrame = now;
+
+      loadChunksAround();
+      updateBiomeLabel();
+      const isNight = updateTime(delta);
+      updatePhysics(delta);
+      updateMobs(delta, isNight);
+      updateNeeds(delta);
+      updateFluids();
+      renderStatus();
+
+      if (now - worldState.lastSave > 6000) {
+        saveWorld();
+      }
+
+      renderer.render(scene, camera);
+      requestAnimationFrame(gameLoop);
+    }
+
+    const keys = {};
+    window.addEventListener("keydown", (event) => {
+      if (event.code === "KeyE") {
+        toggleInventory();
+        return;
+      }
+      keys[event.code] = true;
+      if (event.code.startsWith("Digit")) {
+        const index = Number(event.code.replace("Digit", "")) - 1;
+        if (index >= 0 && index < 9) {
+          inventory.selected = index;
+          renderHotbar();
+        }
+      }
+      if (event.code === "Space" && playerState.onGround) {
+        playerState.velocity.y = settings.jumpSpeed;
+      }
+    });
+
+    window.addEventListener("keyup", (event) => {
+      keys[event.code] = false;
+    });
+
+    renderer.domElement.addEventListener("click", () => {
+      if (!controls.isLocked && !hud.inventory.classList.contains("open")) {
+        controls.lock();
+      }
+    });
+
+    window.addEventListener("mousedown", (event) => {
+      if (hud.inventory.classList.contains("open")) return;
+      if (event.button === 0) breakBlock();
+      if (event.button === 2) placeBlock();
+    });
+
+    window.addEventListener("contextmenu", (event) => event.preventDefault());
+
+    function toggleInventory() {
+      if (hud.inventory.classList.contains("open")) {
+        hud.inventory.classList.remove("open");
+        controls.lock();
+      } else {
+        hud.inventory.classList.add("open");
+        controls.unlock();
+      }
+      renderInventory();
+    }
+
+    window.addEventListener("resize", () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    function init() {
+      loadWorld();
+      initInventory();
+      loadChunksAround();
+      renderStatus();
+      setTimeout(() => {
+        hud.loader.style.display = "none";
+      }, 800);
+      lastFrame = performance.now();
+      requestAnimationFrame(gameLoop);
+    }
+
+    let lastFrame = performance.now();
+    init();
+
+    window.addEventListener("beforeunload", saveWorld);
+  </script>
 </body>
 </html>
